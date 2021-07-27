@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+
+
+    <script src="./components/Collider.js"></script>
+    <script src="./components/Target.js"></script>
+    <script src="./components/Rotation.js"></script>
+
+  </head>
+
+  <body>
+    <a-scene background="color:#026F90">
+
+      <a-entity id="look" look-controls camera position="0 2 20"></a-entity>
+
+      <!--Asset Management-->
+      <a-assets timeout="10000">        
+      <a-asset-item
+          id="diver"
+          src="./assets/parachute/scene.gltf"
+        ></a-asset-item> 
+
+        <a-asset-item
+          id="underwater"
+          src="./assets/terrain/scene.gltf"
+        ></a-asset-item>
+        
+
+      </a-assets>
+
+
+      <!-- Sky  -->
+              
+      <a-entity
+        id="terrain"
+        gltf-model="#underwater"
+        position="0 0 -100"
+        scale="5 5 5"
+        rotation="0 0 0"
+        animation="property: position; to: 0 0 1000;easing:linear; loop: true; dur: 150000"
+        sea-rotation
+        coin 
+        birds
+      >
+      </a-entity>
+
+      <!-- Parachute -->
+      <a-entity
+      id="diver"
+      gltf-model="#diver"
+      position="0 0 10"
+      scale="0.5 0.5 0.5"
+      rotation="0 0 0"
+      diver
+      dynamic-body="mass:0"  
+      game-play
+      
+      >
+      </a-entity> 
+    </a-scene>
+  </body>
+</html>
